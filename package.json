@@ -1,0 +1,16 @@
+{
+  "name": "ipartenopei",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sito e API di I Partenopei — Ristorante e Pizzeria, Isola della Scala",
+  "scripts": {
+    "init-db": "node scripts/init-db.js"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "bcryptjs": "^2.4.3"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
+  }
+}

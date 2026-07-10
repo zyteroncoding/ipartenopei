@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti — I Partenopei</title>
+    <meta name="description" content="Contatta I Partenopei: indirizzo, telefono, orari e form di contatto. Via Vittorio Veneto, 39, Isola della Scala (VR).">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="intestazione">
+        <div class="contenitore">
+            <a href="index.html" class="logo-testo">I Partenopei</a>
+            <button class="nav-toggle" aria-label="Apri il menu di navigazione" aria-expanded="false">☰</button>
+            <ul class="nav-principale">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menù</a></li>
+                <li><a href="contatti.html" aria-current="page">Contatti</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero" style="padding-top: 4rem; padding-bottom: 3rem;">
+        <div class="contenitore">
+            <p class="hero-eyebrow">Contatti</p>
+            <h1 style="font-size: clamp(2.2rem, 5vw, 3.5rem);">Vieni a trovarci</h1>
+        </div>
+    </section>
+
+    <div class="divisore-cornicione" aria-hidden="true">
+        <svg viewBox="0 0 1200 28" preserveAspectRatio="none">
+            <path d="M0,0 L0,14 Q20,26 40,14 Q60,2 80,14 Q100,26 120,14 Q140,2 160,14 Q180,26 200,14 Q220,2 240,14 Q260,26 280,14 Q300,2 320,14 Q340,26 360,14 Q380,2 400,14 Q420,26 440,14 Q460,2 480,14 Q500,26 520,14 Q540,2 560,14 Q580,26 600,14 Q620,2 640,14 Q660,26 680,14 Q700,2 720,14 Q740,26 760,14 Q780,2 800,14 Q820,26 840,14 Q860,2 880,14 Q900,26 920,14 Q940,2 960,14 Q980,26 1000,14 Q1020,2 1040,14 Q1060,26 1080,14 Q1100,2 1120,14 Q1140,26 1160,14 Q1180,2 1200,14 L1200,0 Z" fill="#F3E8D6"/>
+        </svg>
+    </div>
+
+    <section class="sezione" style="padding-top: 3rem;">
+        <div class="contenitore griglia-contatti">
+
+            <div>
+                <div class="sezione-titolo">
+                    <span class="numero">01</span>
+                    <h2 style="font-size: 1.8rem;">Dove siamo</h2>
+                </div>
+
+                <div class="scheda-info" style="margin-bottom: 1.5rem;">
+                    <h3>Indirizzo</h3>
+                    <p data-contenuto="contatti_indirizzo">Via Vittorio Veneto, 39, 37063 Isola della Scala VR</p>
+                </div>
+
+                <div class="scheda-info" style="margin-bottom: 1.5rem;">
+                    <h3>Telefono</h3>
+                    <p><a href="tel:0452244631" data-contenuto="contatti_telefono">045 2244631</a></p>
+                </div>
+
+                <div class="scheda-info">
+                    <h3>Orari</h3>
+                    <ul>
+                        <li>Martedì – Domenica: 12:00–15:00 e 18:30–23:00</li>
+                        <li>Lunedì: chiuso</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <div class="sezione-titolo">
+                    <span class="numero">02</span>
+                    <h2 style="font-size: 1.8rem;">Scrivici</h2>
+                </div>
+
+                <form class="modulo" id="form-contatti" novalidate>
+                    <div class="campo">
+                        <label for="nome">Nome e cognome</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="messaggio">Messaggio</label>
+                        <textarea id="messaggio" name="messaggio" required></textarea>
+                    </div>
+
+                    <button type="submit" class="bottone bottone-primario" id="bottone-invia">Invia messaggio</button>
+
+                    <div class="messaggio-esito" id="messaggio-esito" role="status"></div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="piede-pagina">
+        <div class="contenitore">
+            <div>
+                <h4>I Partenopei</h4>
+                <p data-contenuto="contatti_indirizzo">Via Vittorio Veneto, 39, 37063 Isola della Scala VR</p>
+            </div>
+            <div>
+                <h4>Contatti</h4>
+                <p><a href="tel:0452244631" data-contenuto="contatti_telefono">045 2244631</a></p>
+                <p><a href="contatti.html">Scrivici</a></p>
+            </div>
+            <div>
+                <h4>Orari</h4>
+                <p>Mar–Dom: 12–15 · 18:30–23</p>
+                <p>Lunedì: chiuso</p>
+            </div>
+        </div>
+        <p class="piede-copyright">© <span id="anno-corrente"></span> I Partenopei — Ristorante e Pizzeria</p>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/contatti.js"></script>
+    <script>
+        document.getElementById('anno-corrente').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,560 @@
+/* ==========================================================================
+   I PARTENOPEI — Design system
+   Palette ispirata al forno a legna napoletano: carbone, semolino, pomodoro,
+   basilico, cornicione dorato. Il divisore ondulato tra le sezioni richiama
+   il bordo alveolato della pizza napoletana — il loro tratto distintivo.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500;1,6..72,600&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+    /* Colori */
+    --colore-carbone: #211815;
+    --colore-carbone-chiaro: #332621;
+    --colore-semolino: #F3E8D6;
+    --colore-semolino-scuro: #E7D8BE;
+    --colore-pomodoro: #B23A2E;
+    --colore-pomodoro-scuro: #8E2D23;
+    --colore-basilico: #56683F;
+    --colore-cornicione: #D9A24C;
+    --colore-testo-scuro: #2A211C;
+    --colore-testo-chiaro: #F3E8D6;
+    --colore-testo-attenuato: #8A7C6C;
+
+    /* Tipografia */
+    --font-display: 'Newsreader', serif;
+    --font-corpo: 'Work Sans', sans-serif;
+    --font-utility: 'JetBrains Mono', monospace;
+
+    /* Spaziatura */
+    --spazio-xs: 0.5rem;
+    --spazio-sm: 1rem;
+    --spazio-md: 2rem;
+    --spazio-lg: 4rem;
+    --spazio-xl: 7rem;
+
+    --larghezza-max: 1120px;
+    --raggio: 4px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-corpo);
+    color: var(--colore-testo-scuro);
+    background: var(--colore-semolino);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.15;
+    margin: 0 0 var(--spazio-sm) 0;
+    color: inherit;
+}
+
+p {
+    margin: 0 0 var(--spazio-sm) 0;
+}
+
+a {
+    color: var(--colore-pomodoro);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+:focus-visible {
+    outline: 3px solid var(--colore-cornicione);
+    outline-offset: 3px;
+}
+
+.contenitore {
+    max-width: var(--larghezza-max);
+    margin: 0 auto;
+    padding: 0 var(--spazio-md);
+}
+
+/* ---------- Header / Navigazione ---------- */
+
+.intestazione {
+    background: var(--colore-carbone);
+    color: var(--colore-testo-chiaro);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(217, 162, 76, 0.25);
+}
+
+.intestazione .contenitore {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--spazio-sm);
+    padding-bottom: var(--spazio-sm);
+}
+
+.logo-testo {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--colore-testo-chiaro);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+}
+
+.logo-testo:hover {
+    text-decoration: none;
+    color: var(--colore-cornicione);
+}
+
+.nav-principale {
+    display: flex;
+    gap: var(--spazio-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-principale a {
+    color: var(--colore-testo-chiaro);
+    font-family: var(--font-utility);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.85;
+}
+
+.nav-principale a:hover,
+.nav-principale a[aria-current="page"] {
+    opacity: 1;
+    color: var(--colore-cornicione);
+    text-decoration: none;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--colore-testo-chiaro);
+    color: var(--colore-testo-chiaro);
+    border-radius: var(--raggio);
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+@media (max-width: 720px) {
+    .nav-toggle {
+        display: block;
+    }
+    .nav-principale {
+        display: none;
+        flex-direction: column;
+        gap: var(--spazio-sm);
+        padding: var(--spazio-md) 0;
+        width: 100%;
+    }
+    .nav-principale.aperto {
+        display: flex;
+    }
+    .intestazione .contenitore {
+        flex-wrap: wrap;
+    }
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+    background: var(--colore-carbone);
+    color: var(--colore-testo-chiaro);
+    padding: var(--spazio-xl) 0 var(--spazio-lg);
+    text-align: center;
+    position: relative;
+}
+
+.hero-eyebrow {
+    font-family: var(--font-utility);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.75rem;
+    color: var(--colore-cornicione);
+    margin-bottom: var(--spazio-sm);
+}
+
+.hero h1 {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-style: italic;
+    color: var(--colore-testo-chiaro);
+    margin-bottom: var(--spazio-xs);
+}
+
+.hero-sottotitolo {
+    font-family: var(--font-utility);
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--colore-semolino-scuro);
+    margin-bottom: var(--spazio-md);
+}
+
+.hero-intro {
+    max-width: 42ch;
+    margin: 0 auto var(--spazio-md);
+    color: var(--colore-semolino-scuro);
+    font-size: 1.05rem;
+}
+
+.hero-azioni {
+    display: flex;
+    gap: var(--spazio-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ---------- Bottoni ---------- */
+
+.bottone {
+    display: inline-block;
+    font-family: var(--font-utility);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.85rem 1.6rem;
+    border-radius: var(--raggio);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.bottone:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.bottone-primario {
+    background: var(--colore-pomodoro);
+    color: var(--colore-semolino);
+}
+
+.bottone-primario:hover {
+    background: var(--colore-pomodoro-scuro);
+}
+
+.bottone-secondario {
+    background: transparent;
+    color: var(--colore-testo-chiaro);
+    border-color: rgba(243, 232, 214, 0.4);
+}
+
+.bottone-secondario:hover {
+    border-color: var(--colore-cornicione);
+    color: var(--colore-cornicione);
+}
+
+/* ---------- Divisore "cornicione" (bordo pizza) ---------- */
+/* Signature element: silhouette ondulata e alveolata che richiama
+   il bordo alto e bolloso della pizza napoletana */
+
+.divisore-cornicione {
+    display: block;
+    width: 100%;
+    height: 28px;
+    background: var(--colore-carbone);
+}
+
+.divisore-cornicione svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* ---------- Sezioni generiche ---------- */
+
+.sezione {
+    padding: var(--spazio-xl) 0;
+}
+
+.sezione-scura {
+    background: var(--colore-carbone);
+    color: var(--colore-testo-chiaro);
+}
+
+.sezione-scura h2 {
+    color: var(--colore-testo-chiaro);
+}
+
+.sezione-titolo {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spazio-sm);
+    margin-bottom: var(--spazio-md);
+}
+
+.sezione-titolo .numero {
+    font-family: var(--font-utility);
+    color: var(--colore-pomodoro);
+    font-size: 0.85rem;
+}
+
+.sezione h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-style: italic;
+}
+
+.sezione-larghezza-testo {
+    max-width: 60ch;
+}
+
+/* ---------- Griglia servizi / info pratiche ---------- */
+
+.griglia-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spazio-md);
+    margin-top: var(--spazio-lg);
+}
+
+.scheda-info {
+    background: var(--colore-semolino-scuro);
+    border-radius: var(--raggio);
+    padding: var(--spazio-md);
+}
+
+.scheda-info h3 {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--colore-pomodoro-scuro);
+}
+
+.scheda-info ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.92rem;
+    color: var(--colore-testo-scuro);
+}
+
+.scheda-info li {
+    padding: 0.25rem 0;
+    border-bottom: 1px dashed rgba(42, 33, 28, 0.15);
+}
+
+.scheda-info li:last-child {
+    border-bottom: none;
+}
+
+/* ---------- Menù ---------- */
+
+.categoria-menu {
+    margin-bottom: var(--spazio-lg);
+}
+
+.categoria-menu h3 {
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--colore-pomodoro-scuro);
+    border-bottom: 2px solid var(--colore-cornicione);
+    padding-bottom: 0.4rem;
+    display: inline-block;
+}
+
+.piatto {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--spazio-sm);
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed rgba(42, 33, 28, 0.18);
+}
+
+.piatto:last-child {
+    border-bottom: none;
+}
+
+.piatto-info {
+    flex: 1;
+}
+
+.piatto-nome {
+    font-weight: 600;
+    font-size: 1.02rem;
+}
+
+.piatto-nome .non-disponibile {
+    font-family: var(--font-utility);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--colore-testo-attenuato);
+    margin-left: 0.5rem;
+}
+
+.piatto-descrizione {
+    font-size: 0.88rem;
+    color: var(--colore-testo-attenuato);
+    margin-top: 0.15rem;
+}
+
+.piatto-prezzo {
+    font-family: var(--font-utility);
+    font-size: 0.95rem;
+    white-space: nowrap;
+    color: var(--colore-pomodoro-scuro);
+}
+
+.menu-stato {
+    font-family: var(--font-utility);
+    font-size: 0.85rem;
+    color: var(--colore-testo-attenuato);
+    padding: var(--spazio-md) 0;
+}
+
+/* ---------- Griglia pagina contatti ---------- */
+
+.griglia-contatti {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+@media (max-width: 780px) {
+    .griglia-contatti {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Form ---------- */
+
+.modulo {
+    max-width: 560px;
+}
+
+.campo {
+    margin-bottom: var(--spazio-sm);
+}
+
+.campo label {
+    display: block;
+    font-family: var(--font-utility);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.4rem;
+    color: var(--colore-testo-attenuato);
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid rgba(42, 33, 28, 0.25);
+    border-radius: var(--raggio);
+    font-family: var(--font-corpo);
+    font-size: 1rem;
+    background: #FFFDF9;
+    color: var(--colore-testo-scuro);
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    border-color: var(--colore-pomodoro);
+}
+
+.campo textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.messaggio-esito {
+    padding: 0.85rem 1rem;
+    border-radius: var(--raggio);
+    font-size: 0.92rem;
+    margin-top: var(--spazio-sm);
+    display: none;
+}
+
+.messaggio-esito.visibile {
+    display: block;
+}
+
+.messaggio-esito.successo {
+    background: rgba(86, 104, 63, 0.15);
+    color: var(--colore-basilico);
+    border: 1px solid var(--colore-basilico);
+}
+
+.messaggio-esito.errore {
+    background: rgba(178, 58, 46, 0.1);
+    color: var(--colore-pomodoro-scuro);
+    border: 1px solid var(--colore-pomodoro);
+}
+
+/* ---------- Footer ---------- */
+
+.piede-pagina {
+    background: var(--colore-carbone);
+    color: var(--colore-semolino-scuro);
+    padding: var(--spazio-lg) 0 var(--spazio-md);
+    font-size: 0.9rem;
+}
+
+.piede-pagina .contenitore {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spazio-md);
+}
+
+.piede-pagina h4 {
+    color: var(--colore-cornicione);
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+.piede-pagina a {
+    color: var(--colore-semolino-scuro);
+}
+
+.piede-copyright {
+    text-align: center;
+    font-family: var(--font-utility);
+    font-size: 0.75rem;
+    color: var(--colore-testo-attenuato);
+    margin-top: var(--spazio-lg);
+    padding-top: var(--spazio-md);
+    border-top: 1px solid rgba(243, 232, 214, 0.1);
+}
+
+/* ---------- Utility ---------- */
+
+.solo-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}

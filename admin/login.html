@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accesso gestione — I Partenopei</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .pagina-login {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--colore-carbone);
+        }
+        .scheda-login {
+            background: var(--colore-semolino);
+            padding: var(--spazio-lg) var(--spazio-md);
+            border-radius: var(--raggio);
+            width: 100%;
+            max-width: 380px;
+        }
+        .scheda-login h1 {
+            font-size: 1.8rem;
+            font-style: italic;
+            text-align: center;
+        }
+        .scheda-login .hero-eyebrow {
+            color: var(--colore-pomodoro);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pagina-login">
+        <div class="scheda-login">
+            <p class="hero-eyebrow">Area riservata</p>
+            <h1>I Partenopei</h1>
+
+            <form class="modulo" id="form-login" novalidate>
+                <div class="campo">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required autocomplete="username">
+                </div>
+
+                <div class="campo">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" class="bottone bottone-primario" id="bottone-login" style="width: 100%;">Accedi</button>
+
+                <div class="messaggio-esito" id="messaggio-esito" role="status"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione sito — I Partenopei</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .barra-admin {
+            background: var(--colore-carbone);
+            color: var(--colore-testo-chiaro);
+            padding: var(--spazio-sm) 0;
+        }
+        .barra-admin .contenitore {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .tab-bottoni {
+            display: flex;
+            gap: 0.5rem;
+            margin: var(--spazio-md) 0;
+            flex-wrap: wrap;
+        }
+        .tab-bottone {
+            font-family: var(--font-utility);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--colore-carbone);
+            background: transparent;
+            border-radius: var(--raggio);
+            cursor: pointer;
+        }
+        .tab-bottone.attivo {
+            background: var(--colore-carbone);
+            color: var(--colore-semolino);
+        }
+        .pannello {
+            display: none;
+        }
+        .pannello.attivo {
+            display: block;
+        }
+        .riga-piatto {
+            display: grid;
+            grid-template-columns: 2fr 1fr 3fr 100px 100px auto;
+            gap: 0.6rem;
+            align-items: center;
+            padding: 0.7rem 0;
+            border-bottom: 1px dashed rgba(42, 33, 28, 0.18);
+        }
+        .riga-piatto input, .riga-piatto select {
+            padding: 0.4rem;
+            border: 1px solid rgba(42,33,28,0.25);
+            border-radius: var(--raggio);
+            font-family: var(--font-corpo);
+            font-size: 0.9rem;
+        }
+        .bottone-piccolo {
+            font-family: var(--font-utility);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            padding: 0.4rem 0.7rem;
+            border-radius: var(--raggio);
+            border: 1px solid var(--colore-pomodoro);
+            background: transparent;
+            color: var(--colore-pomodoro);
+            cursor: pointer;
+        }
+        .bottone-piccolo.elimina {
+            border-color: var(--colore-testo-attenuato);
+            color: var(--colore-testo-attenuato);
+        }
+        .blocco-categoria {
+            margin-bottom: var(--spazio-lg);
+            background: var(--colore-semolino-scuro);
+            padding: var(--spazio-md);
+            border-radius: var(--raggio);
+        }
+        .blocco-testo {
+            margin-bottom: var(--spazio-md);
+            padding: var(--spazio-md);
+            background: var(--colore-semolino-scuro);
+            border-radius: var(--raggio);
+        }
+        .blocco-testo textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 0.7rem;
+            font-family: var(--font-corpo);
+            border: 1px solid rgba(42,33,28,0.25);
+            border-radius: var(--raggio);
+        }
+        .nuova-categoria-form {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: var(--spazio-md);
+        }
+        .nuova-categoria-form input {
+            flex: 1;
+            padding: 0.6rem;
+            border: 1px solid rgba(42,33,28,0.25);
+            border-radius: var(--raggio);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="barra-admin">
+        <div class="contenitore">
+            <strong>Gestione sito — I Partenopei</strong>
+            <button class="bottone bottone-secondario" id="bottone-logout" style="border-color: var(--colore-semolino);">Esci</button>
+        </div>
+    </div>
+
+    <div class="contenitore" style="padding-top: var(--spazio-md);">
+
+        <div id="messaggio-esito-admin" class="messaggio-esito" role="status"></div>
+
+        <div class="tab-bottoni">
+            <button class="tab-bottone attivo" data-tab="menu">Menù</button>
+            <button class="tab-bottone" data-tab="testi">Testi del sito</button>
+        </div>
+
+        <!-- TAB MENÙ -->
+        <div class="pannello attivo" id="pannello-menu">
+
+            <div class="nuova-categoria-form">
+                <input type="text" id="nuova-categoria-nome" placeholder="Nome nuova categoria (es. Pizze, Antipasti...)">
+                <button class="bottone bottone-primario" id="bottone-nuova-categoria">Aggiungi categoria</button>
+            </div>
+
+            <div id="categorie-contenitore">
+                <p class="menu-stato">Caricamento in corso...</p>
+            </div>
+        </div>
+
+        <!-- TAB TESTI -->
+        <div class="pannello" id="pannello-testi">
+            <div id="testi-contenitore">
+                <p class="menu-stato">Caricamento in corso...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
