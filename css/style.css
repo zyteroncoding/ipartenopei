@@ -395,7 +395,7 @@ html.js-animazioni [data-reveal="destra"].visibile {
     font-family: var(--font-utility);
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    font-size: 0.72rem;
+    font-size: 0.85rem;
     color: var(--colore-pomodoro);
     margin-bottom: var(--spazio-sm);
 }
