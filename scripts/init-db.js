@@ -85,7 +85,7 @@ async function main() {
         ['home_sottotitolo', 'Ristorante e Pizzeria', 'Sottotitolo sotto il nome in home'],
         ['home_intro', 'Autentica tradizione partenopea nel cuore di Isola della Scala.', 'Testo introduttivo breve in home'],
         ['storia_titolo', 'La nostra storia', 'Titolo sezione storia'],
-        ['storia_testo', 'Testo da personalizzare con la vera storia del ristorante.', 'Testo della sezione storia/chi siamo'],
+        ['storia_testo', 'Amiamo quello che facciamo, e si sente. Ogni pizza nasce da ore di lievitazione e da un forno a legna che non tradisce mai. Questa è la nostra Napoli, portata a Isola della Scala con tutto il cuore che ha.', 'Testo della sezione storia/chi siamo'],
         ['contatti_indirizzo', 'Via Vittorio Veneto, 39, 37063 Isola della Scala VR', 'Indirizzo mostrato in pagina contatti'],
         ['contatti_telefono', '045 2244631', 'Numero di telefono mostrato in pagina contatti'],
     ];
