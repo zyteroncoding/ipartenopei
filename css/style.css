@@ -5,25 +5,26 @@
    il bordo alveolato della pizza napoletana — il loro tratto distintivo.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500;1,6..72,600&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-    /* Colori */
-    --colore-carbone: #211815;
-    --colore-carbone-chiaro: #332621;
-    --colore-semolino: #F3E8D6;
-    --colore-semolino-scuro: #E7D8BE;
-    --colore-pomodoro: #B23A2E;
-    --colore-pomodoro-scuro: #8E2D23;
-    --colore-basilico: #56683F;
-    --colore-cornicione: #D9A24C;
-    --colore-testo-scuro: #2A211C;
-    --colore-testo-chiaro: #F3E8D6;
-    --colore-testo-attenuato: #8A7C6C;
+    /* Colori — palette da forno a legna napoletano, più satura e drammatica */
+    --colore-carbone: #180F0C;
+    --colore-carbone-chiaro: #2B1D17;
+    --colore-semolino: #F6ECD9;
+    --colore-semolino-scuro: #EBDBBC;
+    --colore-pomodoro: #D5402A;
+    --colore-pomodoro-scuro: #A62E1C;
+    --colore-brace: #FF6B35;
+    --colore-basilico: #5C7A3F;
+    --colore-cornicione: #F0B03C;
+    --colore-testo-scuro: #241A14;
+    --colore-testo-chiaro: #F6ECD9;
+    --colore-testo-attenuato: #9C8A76;
 
     /* Tipografia */
-    --font-display: 'Newsreader', serif;
-    --font-corpo: 'Work Sans', sans-serif;
+    --font-display: 'Unbounded', sans-serif;
+    --font-corpo: 'Manrope', sans-serif;
     --font-utility: 'JetBrains Mono', monospace;
 
     /* Spaziatura */
@@ -65,8 +66,8 @@ body {
 
 h1, h2, h3, h4 {
     font-family: var(--font-display);
-    font-weight: 500;
-    line-height: 1.15;
+    font-weight: 700;
+    line-height: 1.2;
     margin: 0 0 var(--spazio-sm) 0;
     color: inherit;
 }
@@ -121,8 +122,9 @@ img {
 
 .logo-testo {
     font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.5rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
     color: var(--colore-testo-chiaro);
     text-decoration: none;
     letter-spacing: 0.02em;
@@ -190,35 +192,73 @@ img {
 /* ---------- Hero ---------- */
 
 .hero {
-    background: var(--colore-carbone);
-    color: var(--colore-testo-chiaro);
-    padding: var(--spazio-xl) 0 var(--spazio-lg);
-    text-align: center;
     position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: var(--colore-testo-chiaro);
+    text-align: center;
+    padding: var(--spazio-lg) 0;
+}
+
+.hero-immagine-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero-immagine {
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    transform: translateY(var(--parallax-y, 0px)) scale(1.08);
+    will-change: transform;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(24, 15, 12, 0.55) 0%, rgba(24, 15, 12, 0.75) 55%, var(--colore-carbone) 100%),
+        linear-gradient(90deg, rgba(24, 15, 12, 0.4), rgba(24, 15, 12, 0.15));
+}
+
+.hero-contenuto {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-eyebrow {
     font-family: var(--font-utility);
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.22em;
     font-size: 0.75rem;
     color: var(--colore-cornicione);
     margin-bottom: var(--spazio-sm);
 }
 
 .hero h1 {
-    font-size: clamp(2.8rem, 7vw, 5.5rem);
-    font-style: italic;
+    font-size: clamp(2.6rem, 8vw, 5.2rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
     color: var(--colore-testo-chiaro);
+    text-transform: uppercase;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
     margin-bottom: var(--spazio-xs);
 }
 
 .hero-sottotitolo {
     font-family: var(--font-utility);
     font-size: 0.95rem;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--colore-semolino-scuro);
+    color: var(--colore-cornicione);
     margin-bottom: var(--spazio-md);
 }
 
@@ -226,7 +266,7 @@ img {
     max-width: 42ch;
     margin: 0 auto var(--spazio-md);
     color: var(--colore-semolino-scuro);
-    font-size: 1.05rem;
+    font-size: 1.1rem;
 }
 
 .hero-azioni {
@@ -234,6 +274,100 @@ img {
     gap: var(--spazio-sm);
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.hero-scorri {
+    position: absolute;
+    bottom: var(--spazio-md);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--colore-semolino-scuro);
+    font-family: var(--font-utility);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.75;
+    animation: rimbalzo 2.2s ease-in-out infinite;
+}
+
+.hero-scorri svg {
+    width: 18px;
+    height: 18px;
+}
+
+@keyframes rimbalzo {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 8px); }
+}
+
+/* ---------- Animazioni allo scroll (reveal) ---------- */
+
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal].visibile {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-reveal="scala"] {
+    transform: translateY(24px) scale(0.94);
+}
+
+[data-reveal="scala"].visibile {
+    transform: translateY(0) scale(1);
+}
+
+[data-reveal="sinistra"] {
+    transform: translateX(-50px);
+}
+
+[data-reveal="sinistra"].visibile {
+    transform: translateX(0);
+}
+
+[data-reveal="destra"] {
+    transform: translateX(50px);
+}
+
+[data-reveal="destra"].visibile {
+    transform: translateX(0);
+}
+
+[data-reveal-gruppo] > *:nth-child(1) { transition-delay: 0s; }
+[data-reveal-gruppo] > *:nth-child(2) { transition-delay: 0.12s; }
+[data-reveal-gruppo] > *:nth-child(3) { transition-delay: 0.24s; }
+[data-reveal-gruppo] > *:nth-child(4) { transition-delay: 0.36s; }
+
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .hero-scorri {
+        animation: none;
+    }
+}
+
+/* ---------- Hero compatta (pagine interne: menù, contatti) ---------- */
+
+.hero-compatta {
+    min-height: auto;
+    background: var(--colore-carbone);
+    padding: 6.5rem 0 3rem;
+}
+
+.hero-compatta h1 {
+    font-size: clamp(2.1rem, 5vw, 3.2rem);
 }
 
 /* ---------- Bottoni ---------- */
@@ -257,12 +391,14 @@ img {
 }
 
 .bottone-primario {
-    background: var(--colore-pomodoro);
+    background: linear-gradient(135deg, var(--colore-brace), var(--colore-pomodoro));
     color: var(--colore-semolino);
+    box-shadow: 0 4px 20px rgba(213, 64, 42, 0.35);
 }
 
 .bottone-primario:hover {
-    background: var(--colore-pomodoro-scuro);
+    background: linear-gradient(135deg, var(--colore-pomodoro), var(--colore-pomodoro-scuro));
+    box-shadow: 0 6px 26px rgba(213, 64, 42, 0.5);
 }
 
 .bottone-secondario {
@@ -322,8 +458,10 @@ img {
 }
 
 .sezione h2 {
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    font-style: italic;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
 }
 
 .sezione-larghezza-testo {
@@ -346,8 +484,10 @@ img {
 }
 
 .scheda-info h3 {
-    font-size: 1.1rem;
-    font-style: italic;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
     color: var(--colore-pomodoro-scuro);
 }
 
@@ -375,8 +515,9 @@ img {
 }
 
 .categoria-menu h3 {
-    font-style: italic;
-    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.4rem;
     color: var(--colore-pomodoro-scuro);
     border-bottom: 2px solid var(--colore-cornicione);
     padding-bottom: 0.4rem;
@@ -530,8 +671,10 @@ img {
 
 .piede-pagina h4 {
     color: var(--colore-cornicione);
-    font-size: 0.95rem;
-    font-style: italic;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
 
 .piede-pagina a {

@@ -7,15 +7,39 @@
 // (o usa il dominio di test che offrono per iniziare), crea una API key e
 // impostala su Vercel come variabile d'ambiente RESEND_API_KEY.
 
+const { getIndirizzoIp, verificaLimite, registraTentativo } = require('./_rate_limit');
+
+const MAX_INVII = 5;
+const FINESTRA_SECONDI = 60 * 60; // 1 ora
+const BLOCCO_SECONDI = 60 * 60;   // blocco di 1 ora dopo troppi invii
+
 module.exports = async (req, res) => {
     if (req.method !== 'POST') {
         return res.status(405).json({ errore: 'Metodo non consentito.' });
     }
 
+    const ip = getIndirizzoIp(req);
+    const chiaveLimite = `contatti:${ip}`;
+
+    const limite = await verificaLimite(chiaveLimite);
+    if (!limite.consentito) {
+        return res.status(429).json({
+            errore: 'Hai inviato troppi messaggi in poco tempo. Riprova più tardi o chiamaci direttamente.',
+        });
+    }
+
+    // Contiamo questo invio indipendentemente dall'esito, per evitare che
+    // qualcuno aggiri il limite mandando richieste apposta non valide
+    await registraTentativo(chiaveLimite, MAX_INVII, FINESTRA_SECONDI, BLOCCO_SECONDI);
+
     const { nome, email, messaggio } = req.body || {};
 
     if (!nome || !email || !messaggio) {
         return res.status(400).json({ errore: 'Tutti i campi sono obbligatori.' });
+    }
+
+    if (nome.length > 100 || email.length > 100 || messaggio.length > 3000) {
+        return res.status(400).json({ errore: 'Uno o più campi superano la lunghezza massima consentita.' });
     }
 
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

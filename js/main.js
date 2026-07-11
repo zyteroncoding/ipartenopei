@@ -3,7 +3,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     attivaMenuMobile();
     caricaContenutiDinamici();
+    impostaAnnoCorrente();
 });
+
+// Imposta automaticamente l'anno corrente nel footer, se presente
+function impostaAnnoCorrente() {
+    const elemento = document.getElementById('anno-corrente');
+    if (elemento) {
+        elemento.textContent = new Date().getFullYear();
+    }
+}
 
 // Apre/chiude il menu di navigazione su mobile
 function attivaMenuMobile() {

@@ -68,6 +68,15 @@ async function main() {
         )
     `);
 
+    await db.execute(`
+        CREATE TABLE IF NOT EXISTS limite_richieste (
+            chiave TEXT PRIMARY KEY,
+            tentativi INTEGER NOT NULL DEFAULT 0,
+            primo_tentativo INTEGER NOT NULL,
+            bloccato_fino INTEGER
+        )
+    `);
+
     console.log('Tabelle create.');
 
     // Contenuti iniziali del mini-CMS (solo se non esistono già)

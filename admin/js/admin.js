@@ -123,6 +123,7 @@ function inizializzaDashboard() {
     inizializzaTab();
     caricaMenuAdmin();
     caricaTestiAdmin();
+    inizializzaCambioPassword();
 
     document.getElementById('bottone-nuova-categoria').addEventListener('click', creaCategoria);
 }
@@ -356,4 +357,35 @@ async function salvaTesto(bottone) {
     } catch (errore) {
         mostraEsitoAdmin(errore.message, 'errore');
     }
+}
+
+/* ---------- Gestione SICUREZZA (cambio password) ---------- */
+
+function inizializzaCambioPassword() {
+    const form = document.getElementById('form-cambia-password');
+    if (!form) return;
+
+    form.addEventListener('submit', async (evento) => {
+        evento.preventDefault();
+
+        const passwordAttuale = document.getElementById('password-attuale').value;
+        const passwordNuova = document.getElementById('password-nuova').value;
+        const passwordNuovaConferma = document.getElementById('password-nuova-conferma').value;
+
+        if (passwordNuova !== passwordNuovaConferma) {
+            mostraEsitoAdmin('La conferma della nuova password non corrisponde.', 'errore');
+            return;
+        }
+
+        try {
+            await chiamataAutenticata('/api/cambia-password', {
+                method: 'POST',
+                body: JSON.stringify({ passwordAttuale, passwordNuova }),
+            });
+            mostraEsitoAdmin('Password aggiornata con successo.', 'successo');
+            form.reset();
+        } catch (errore) {
+            mostraEsitoAdmin(errore.message, 'errore');
+        }
+    });
 }

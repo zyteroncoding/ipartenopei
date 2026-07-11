@@ -21,23 +21,23 @@
         </div>
     </header>
 
-    <section class="hero" style="padding-top: 4rem; padding-bottom: 3rem;">
-        <div class="contenitore">
-            <p class="hero-eyebrow">Contatti</p>
-            <h1 style="font-size: clamp(2.2rem, 5vw, 3.5rem);">Vieni a trovarci</h1>
+    <section class="hero hero-compatta">
+        <div class="contenitore hero-contenuto">
+            <p class="hero-eyebrow" data-reveal>Contatti</p>
+            <h1 data-reveal>Vieni a trovarci</h1>
         </div>
     </section>
 
     <div class="divisore-cornicione" aria-hidden="true">
         <svg viewBox="0 0 1200 28" preserveAspectRatio="none">
-            <path d="M0,0 L0,14 Q20,26 40,14 Q60,2 80,14 Q100,26 120,14 Q140,2 160,14 Q180,26 200,14 Q220,2 240,14 Q260,26 280,14 Q300,2 320,14 Q340,26 360,14 Q380,2 400,14 Q420,26 440,14 Q460,2 480,14 Q500,26 520,14 Q540,2 560,14 Q580,26 600,14 Q620,2 640,14 Q660,26 680,14 Q700,2 720,14 Q740,26 760,14 Q780,2 800,14 Q820,26 840,14 Q860,2 880,14 Q900,26 920,14 Q940,2 960,14 Q980,26 1000,14 Q1020,2 1040,14 Q1060,26 1080,14 Q1100,2 1120,14 Q1140,26 1160,14 Q1180,2 1200,14 L1200,0 Z" fill="#F3E8D6"/>
+            <path d="M0,0 L0,14 Q20,26 40,14 Q60,2 80,14 Q100,26 120,14 Q140,2 160,14 Q180,26 200,14 Q220,2 240,14 Q260,26 280,14 Q300,2 320,14 Q340,26 360,14 Q380,2 400,14 Q420,26 440,14 Q460,2 480,14 Q500,26 520,14 Q540,2 560,14 Q580,26 600,14 Q620,2 640,14 Q660,26 680,14 Q700,2 720,14 Q740,26 760,14 Q780,2 800,14 Q820,26 840,14 Q860,2 880,14 Q900,26 920,14 Q940,2 960,14 Q980,26 1000,14 Q1020,2 1040,14 Q1060,26 1080,14 Q1100,2 1120,14 Q1140,26 1160,14 Q1180,2 1200,14 L1200,0 Z" fill="#F6ECD9"/>
         </svg>
     </div>
 
     <section class="sezione" style="padding-top: 3rem;">
         <div class="contenitore griglia-contatti">
 
-            <div>
+            <div data-reveal="sinistra">
                 <div class="sezione-titolo">
                     <span class="numero">01</span>
                     <h2 style="font-size: 1.8rem;">Dove siamo</h2>
@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <div>
+            <div data-reveal="destra">
                 <div class="sezione-titolo">
                     <span class="numero">02</span>
                     <h2 style="font-size: 1.8rem;">Scrivici</h2>
@@ -115,9 +115,7 @@
 
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
     <script src="js/contatti.js"></script>
-    <script>
-        document.getElementById('anno-corrente').textContent = new Date().getFullYear();
-    </script>
 </body>
 </html>

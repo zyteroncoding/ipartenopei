@@ -22,33 +22,50 @@
     </header>
 
     <section class="hero">
-        <div class="contenitore">
-            <p class="hero-eyebrow">Isola della Scala · Verona</p>
-            <h1 data-contenuto="home_titolo">I Partenopei</h1>
-            <p class="hero-sottotitolo" data-contenuto="home_sottotitolo">Ristorante e Pizzeria</p>
-            <p class="hero-intro" data-contenuto="home_intro">
+        <div class="hero-immagine-wrapper" aria-hidden="true">
+            <img
+                class="hero-immagine"
+                src="https://images.unsplash.com/photo-1579751626657-72bc17010498?fm=jpg&q=80&w=2400&auto=format&fit=crop"
+                alt=""
+                fetchpriority="high"
+            >
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="contenitore hero-contenuto">
+            <p class="hero-eyebrow" data-reveal>Isola della Scala · Verona</p>
+            <h1 data-contenuto="home_titolo" data-reveal>I Partenopei</h1>
+            <p class="hero-sottotitolo" data-contenuto="home_sottotitolo" data-reveal>Ristorante e Pizzeria</p>
+            <p class="hero-intro" data-contenuto="home_intro" data-reveal>
                 Autentica tradizione partenopea nel cuore di Isola della Scala.
             </p>
-            <div class="hero-azioni">
+            <div class="hero-azioni" data-reveal>
                 <a href="menu.html" class="bottone bottone-primario">Guarda il menù</a>
                 <a href="tel:0452244631" class="bottone bottone-secondario">Chiama: 045 2244631</a>
             </div>
+        </div>
+
+        <div class="hero-scorri" aria-hidden="true">
+            Scorri
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 4v16m0 0l-6-6m6 6l6-6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
         </div>
     </section>
 
     <div class="divisore-cornicione" aria-hidden="true">
         <svg viewBox="0 0 1200 28" preserveAspectRatio="none">
-            <path d="M0,0 L0,14 Q20,26 40,14 Q60,2 80,14 Q100,26 120,14 Q140,2 160,14 Q180,26 200,14 Q220,2 240,14 Q260,26 280,14 Q300,2 320,14 Q340,26 360,14 Q380,2 400,14 Q420,26 440,14 Q460,2 480,14 Q500,26 520,14 Q540,2 560,14 Q580,26 600,14 Q620,2 640,14 Q660,26 680,14 Q700,2 720,14 Q740,26 760,14 Q780,2 800,14 Q820,26 840,14 Q860,2 880,14 Q900,26 920,14 Q940,2 960,14 Q980,26 1000,14 Q1020,2 1040,14 Q1060,26 1080,14 Q1100,2 1120,14 Q1140,26 1160,14 Q1180,2 1200,14 L1200,0 Z" fill="#F3E8D6"/>
+            <path d="M0,0 L0,14 Q20,26 40,14 Q60,2 80,14 Q100,26 120,14 Q140,2 160,14 Q180,26 200,14 Q220,2 240,14 Q260,26 280,14 Q300,2 320,14 Q340,26 360,14 Q380,2 400,14 Q420,26 440,14 Q460,2 480,14 Q500,26 520,14 Q540,2 560,14 Q580,26 600,14 Q620,2 640,14 Q660,26 680,14 Q700,2 720,14 Q740,26 760,14 Q780,2 800,14 Q820,26 840,14 Q860,2 880,14 Q900,26 920,14 Q940,2 960,14 Q980,26 1000,14 Q1020,2 1040,14 Q1060,26 1080,14 Q1100,2 1120,14 Q1140,26 1160,14 Q1180,2 1200,14 L1200,0 Z" fill="#F6ECD9"/>
         </svg>
     </div>
 
     <section class="sezione">
         <div class="contenitore">
-            <div class="sezione-titolo">
+            <div class="sezione-titolo" data-reveal>
                 <span class="numero">01</span>
                 <h2 data-contenuto="storia_titolo">La nostra storia</h2>
             </div>
-            <p class="sezione-larghezza-testo" data-contenuto="storia_testo">
+            <p class="sezione-larghezza-testo" data-contenuto="storia_testo" data-reveal>
                 Testo da personalizzare con la vera storia del ristorante.
             </p>
         </div>
@@ -56,13 +73,13 @@
 
     <section class="sezione sezione-scura">
         <div class="contenitore">
-            <div class="sezione-titolo">
+            <div class="sezione-titolo" data-reveal>
                 <span class="numero">02</span>
                 <h2>Da noi trovi</h2>
             </div>
 
-            <div class="griglia-info">
-                <div class="scheda-info">
+            <div class="griglia-info" data-reveal-gruppo>
+                <div class="scheda-info" data-reveal="scala">
                     <h3>Servizio</h3>
                     <ul>
                         <li>Pranzo e cena</li>
@@ -72,7 +89,7 @@
                     </ul>
                 </div>
 
-                <div class="scheda-info">
+                <div class="scheda-info" data-reveal="scala">
                     <h3>Famiglie e amici a 4 zampe</h3>
                     <ul>
                         <li>Menù per bambini</li>
@@ -82,7 +99,7 @@
                     </ul>
                 </div>
 
-                <div class="scheda-info">
+                <div class="scheda-info" data-reveal="scala">
                     <h3>Comodità</h3>
                     <ul>
                         <li>Parcheggio gratuito</li>
@@ -96,7 +113,7 @@
 
     <div class="divisore-cornicione" aria-hidden="true" style="background: var(--colore-carbone);">
         <svg viewBox="0 0 1200 28" preserveAspectRatio="none">
-            <path d="M0,28 L0,14 Q20,2 40,14 Q60,26 80,14 Q100,2 120,14 Q140,26 160,14 Q180,2 200,14 Q220,26 240,14 Q260,2 280,14 Q300,26 320,14 Q340,2 360,14 Q380,26 400,14 Q420,2 440,14 Q460,26 480,14 Q500,2 520,14 Q540,26 560,14 Q580,2 600,14 Q620,26 640,14 Q660,2 680,14 Q700,26 720,14 Q740,2 760,14 Q780,26 800,14 Q820,2 840,14 Q860,26 880,14 Q900,2 920,14 Q940,26 960,14 Q980,2 1000,14 Q1020,26 1040,14 Q1060,2 1080,14 Q1100,26 1120,14 Q1140,2 1160,14 Q1180,26 1200,14 L1200,28 Z" fill="#F3E8D6"/>
+            <path d="M0,28 L0,14 Q20,2 40,14 Q60,26 80,14 Q100,2 120,14 Q140,26 160,14 Q180,2 200,14 Q220,26 240,14 Q260,2 280,14 Q300,26 320,14 Q340,2 360,14 Q380,26 400,14 Q420,2 440,14 Q460,26 480,14 Q500,2 520,14 Q540,26 560,14 Q580,2 600,14 Q620,26 640,14 Q660,2 680,14 Q700,26 720,14 Q740,2 760,14 Q780,26 800,14 Q820,2 840,14 Q860,26 880,14 Q900,2 920,14 Q940,26 960,14 Q980,2 1000,14 Q1020,26 1040,14 Q1060,2 1080,14 Q1100,26 1120,14 Q1140,2 1160,14 Q1180,26 1200,14 L1200,28 Z" fill="#F6ECD9"/>
         </svg>
     </div>
 
@@ -122,8 +139,6 @@
 
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        document.getElementById('anno-corrente').textContent = new Date().getFullYear();
-    </script>
+    <script src="js/animations.js"></script>
 </body>
 </html>
