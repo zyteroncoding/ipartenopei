@@ -306,49 +306,50 @@ img {
 }
 
 /* ---------- Animazioni allo scroll (reveal) ---------- */
+/* Pattern "a prova di errore": gli elementi sono visibili normalmente.
+   Solo se il JS parte correttamente, il tag <html> riceve la classe
+   "js-animazioni" e a quel punto (e SOLO a quel punto) gli elementi con
+   data-reveal partono nascosti per poter animarsi all'ingresso. Così,
+   se lo script non dovesse partire per qualche motivo, il sito resta
+   comunque perfettamente leggibile invece di restare invisibile. */
 
-[data-reveal] {
+html.js-animazioni [data-reveal] {
     opacity: 0;
-    transform: translateY(36px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(28px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-[data-reveal].visibile {
+html.js-animazioni [data-reveal].visibile {
     opacity: 1;
     transform: translateY(0);
 }
 
-[data-reveal="scala"] {
-    transform: translateY(24px) scale(0.94);
+html.js-animazioni [data-reveal="scala"] {
+    transform: translateY(20px) scale(0.96);
 }
 
-[data-reveal="scala"].visibile {
+html.js-animazioni [data-reveal="scala"].visibile {
     transform: translateY(0) scale(1);
 }
 
-[data-reveal="sinistra"] {
-    transform: translateX(-50px);
+html.js-animazioni [data-reveal="sinistra"] {
+    transform: translateX(-40px);
 }
 
-[data-reveal="sinistra"].visibile {
+html.js-animazioni [data-reveal="sinistra"].visibile {
     transform: translateX(0);
 }
 
-[data-reveal="destra"] {
-    transform: translateX(50px);
+html.js-animazioni [data-reveal="destra"] {
+    transform: translateX(40px);
 }
 
-[data-reveal="destra"].visibile {
+html.js-animazioni [data-reveal="destra"].visibile {
     transform: translateX(0);
 }
-
-[data-reveal-gruppo] > *:nth-child(1) { transition-delay: 0s; }
-[data-reveal-gruppo] > *:nth-child(2) { transition-delay: 0.12s; }
-[data-reveal-gruppo] > *:nth-child(3) { transition-delay: 0.24s; }
-[data-reveal-gruppo] > *:nth-child(4) { transition-delay: 0.36s; }
 
 @media (prefers-reduced-motion: reduce) {
-    [data-reveal] {
+    html.js-animazioni [data-reveal] {
         opacity: 1;
         transform: none;
         transition: none;
@@ -368,6 +369,189 @@ img {
 
 .hero-compatta h1 {
     font-size: clamp(2.1rem, 5vw, 3.2rem);
+}
+
+/* ---------- Titolo impilato (grande, riga per riga, stile "manifesto") ---------- */
+
+.titolo-impilato {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    font-size: clamp(2.6rem, 7vw, 5.2rem);
+    margin: 0;
+}
+
+.titolo-impilato span {
+    display: block;
+}
+
+.titolo-impilato .riga-accento {
+    color: var(--colore-cornicione);
+}
+
+.etichetta-piccola {
+    font-family: var(--font-utility);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.72rem;
+    color: var(--colore-pomodoro);
+    margin-bottom: var(--spazio-sm);
+}
+
+.sezione-scura .etichetta-piccola {
+    color: var(--colore-cornicione);
+}
+
+/* ---------- Sezione storia: continua il buio dell'hero, nessuno stacco ---------- */
+
+.sezione-storia {
+    background: var(--colore-carbone);
+    color: var(--colore-testo-chiaro);
+    padding: 2rem 0 var(--spazio-xl);
+}
+
+.storia-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--spazio-lg);
+    align-items: end;
+}
+
+.storia-testo-blocco p {
+    color: var(--colore-semolino-scuro);
+    font-size: 1.08rem;
+    max-width: 52ch;
+    margin-top: var(--spazio-md);
+}
+
+.storia-numeri {
+    display: flex;
+    gap: var(--spazio-lg);
+    margin-top: var(--spazio-lg);
+    flex-wrap: wrap;
+}
+
+.storia-numero .valore {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.4rem;
+    color: var(--colore-cornicione);
+    line-height: 1;
+}
+
+.storia-numero .etichetta {
+    font-family: var(--font-utility);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--colore-testo-attenuato);
+    margin-top: 0.4rem;
+}
+
+@media (max-width: 860px) {
+    .storia-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Schede con icone (stile "impasto Spizzati") ---------- */
+
+.griglia-icone {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.scheda-icona {
+    padding: var(--spazio-lg) var(--spazio-md);
+    text-align: center;
+    position: relative;
+    border-top: 1px solid rgba(36, 26, 20, 0.1);
+}
+
+.scheda-icona::before {
+    content: '';
+    position: absolute;
+    top: var(--spazio-lg);
+    bottom: var(--spazio-lg);
+    left: 0;
+    width: 1px;
+    background: rgba(36, 26, 20, 0.12);
+}
+
+.scheda-icona:first-child::before {
+    display: none;
+}
+
+@media (max-width: 780px) {
+    .scheda-icona::before {
+        display: none;
+    }
+    .scheda-icona {
+        border-top: 1px dashed rgba(36, 26, 20, 0.15);
+    }
+    .scheda-icona:first-child {
+        border-top: none;
+    }
+}
+
+.scheda-icona .icona {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto var(--spazio-sm);
+    color: var(--colore-pomodoro);
+}
+
+.scheda-icona .icona svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 1.4;
+}
+
+.scheda-icona h3 {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.5rem;
+}
+
+.scheda-icona p {
+    font-size: 0.9rem;
+    color: var(--colore-testo-attenuato);
+    max-width: 26ch;
+    margin: 0 auto;
+}
+
+/* ---------- Banner CTA a tutta larghezza (gradiente fiamma) ---------- */
+
+.banner-cta {
+    background: linear-gradient(120deg, var(--colore-pomodoro-scuro), var(--colore-pomodoro) 55%, var(--colore-brace));
+    color: var(--colore-semolino);
+    text-align: center;
+    padding: var(--spazio-lg) 0;
+}
+
+.banner-cta .titolo-impilato {
+    color: var(--colore-semolino);
+    margin-bottom: var(--spazio-md);
+}
+
+.banner-cta .hero-azioni {
+    justify-content: center;
+}
+
+.banner-cta .bottone-primario {
+    background: var(--colore-carbone);
+    box-shadow: none;
+}
+
+.banner-cta .bottone-primario:hover {
+    background: var(--colore-carbone-chiaro);
+}
+
+.banner-cta .bottone-secondario {
+    border-color: rgba(246, 236, 217, 0.5);
 }
 
 /* ---------- Bottoni ---------- */
