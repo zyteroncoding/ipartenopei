@@ -11,9 +11,10 @@ function inizializzaPannelloChiamata() {
     const pulsanti = document.querySelectorAll('[data-chiama-intelligente]');
     const overlay = document.getElementById('overlay-chiamata');
 
+    // Controlli difensivi: se manca un pezzo, non facciamo nulla invece
+    // di rischiare un errore che blocca lo script
     if (pulsanti.length === 0 || !overlay) return;
 
-    const pannello = overlay.querySelector('.pannello-chiamata');
     const bottoneChiudi = document.getElementById('chiudi-pannello-chiamata');
     const bottoneCopia = document.getElementById('copia-numero-telefono');
 
@@ -35,11 +36,15 @@ function inizializzaPannelloChiamata() {
     });
 
     function apriPannello() {
-        overlay.hidden = false;
-        // Un piccolo timeout permette alla transizione CSS di partire
-        // dallo stato iniziale invece di "saltare" già aperta
+        overlay.classList.add('aperto');
+        // Doppio requestAnimationFrame: garantisce che il browser abbia
+        // già applicato "display: flex" (dalla classe aperto) PRIMA di
+        // aggiungere la classe che avvia la transizione, altrimenti
+        // l'animazione di apertura rischia di non partire
         requestAnimationFrame(() => {
-            overlay.classList.add('visibile');
+            requestAnimationFrame(() => {
+                overlay.classList.add('visibile');
+            });
         });
         document.addEventListener('keydown', chiudiConEsc);
     }
@@ -49,7 +54,7 @@ function inizializzaPannelloChiamata() {
         document.removeEventListener('keydown', chiudiConEsc);
         // Aspetta la fine della transizione prima di nascondere del tutto
         setTimeout(() => {
-            overlay.hidden = true;
+            overlay.classList.remove('aperto');
         }, 300);
     }
 
@@ -57,7 +62,9 @@ function inizializzaPannelloChiamata() {
         if (evento.key === 'Escape') chiudiPannello();
     }
 
-    bottoneChiudi.addEventListener('click', chiudiPannello);
+    if (bottoneChiudi) {
+        bottoneChiudi.addEventListener('click', chiudiPannello);
+    }
 
     // Clic fuori dal pannello (sull'overlay scuro) lo chiude
     overlay.addEventListener('click', (evento) => {
@@ -65,19 +72,21 @@ function inizializzaPannelloChiamata() {
     });
 
     // Copia il numero negli appunti con conferma visiva
-    bottoneCopia.addEventListener('click', async () => {
-        const numero = '045 2244631';
-        try {
-            await navigator.clipboard.writeText(numero);
-            const testoOriginale = bottoneCopia.textContent;
-            bottoneCopia.textContent = 'Copiato!';
-            setTimeout(() => {
-                bottoneCopia.textContent = testoOriginale;
-            }, 1800);
-        } catch (errore) {
-            // Se il clipboard non è disponibile (raro, permessi negati),
-            // il numero è comunque visibile e selezionabile a mano
-            console.warn('Copia non riuscita, il numero resta comunque visibile.', errore);
-        }
-    });
+    if (bottoneCopia) {
+        bottoneCopia.addEventListener('click', async () => {
+            const numero = '045 2244631';
+            try {
+                await navigator.clipboard.writeText(numero);
+                const testoOriginale = bottoneCopia.textContent;
+                bottoneCopia.textContent = 'Copiato!';
+                setTimeout(() => {
+                    bottoneCopia.textContent = testoOriginale;
+                }, 1800);
+            } catch (errore) {
+                // Se il clipboard non è disponibile (raro, permessi negati),
+                // il numero resta comunque visibile e selezionabile a mano
+                console.warn('Copia non riuscita, il numero resta comunque visibile.', errore);
+            }
+        });
+    }
 }
