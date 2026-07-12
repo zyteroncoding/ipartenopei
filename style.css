@@ -386,6 +386,107 @@ html.js-animazioni [data-reveal="destra"].visibile {
     font-variant-numeric: tabular-nums;
 }
 
+/* ---------- Pannello "chiama per prenotare" (solo desktop) ---------- */
+
+.overlay-pannello {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(24, 15, 12, 0);
+    padding: var(--spazio-md);
+    transition: background 0.3s ease;
+}
+
+.overlay-pannello.visibile {
+    background: rgba(24, 15, 12, 0.72);
+}
+
+.pannello-chiamata {
+    position: relative;
+    background: var(--colore-semolino);
+    border-radius: 8px;
+    padding: var(--spazio-lg) var(--spazio-md) var(--spazio-md);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    transition: opacity 0.35s cubic-bezier(0.19, 1, 0.22, 1), transform 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.overlay-pannello.visibile .pannello-chiamata {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.pannello-chiudi {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: var(--colore-testo-attenuato);
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.4rem;
+}
+
+.pannello-chiudi:hover {
+    color: var(--colore-pomodoro);
+}
+
+.pannello-icona {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto var(--spazio-sm);
+    color: var(--colore-pomodoro);
+    background: rgba(213, 64, 42, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pannello-icona svg {
+    width: 26px;
+    height: 26px;
+}
+
+.numero-telefono-grande {
+    display: block;
+    font-family: var(--font-utility);
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--colore-testo-scuro);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--spazio-md);
+}
+
+.numero-telefono-grande:hover {
+    color: var(--colore-pomodoro);
+    text-decoration: none;
+}
+
+.pannello-azioni {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pannello-chiamata,
+    .overlay-pannello {
+        transition: none;
+    }
+}
+
 /* ---------- Hero compatta (pagine interne: menù, contatti) ---------- */
 
 .hero-compatta {
