@@ -553,7 +553,7 @@ html.js-animazioni [data-reveal="destra"].visibile {
 /* ---------- Banner CTA a tutta larghezza (gradiente fiamma) ---------- */
 
 .banner-cta {
-    background: linear-gradient(120deg, var(--colore-pomodoro-scuro), var(--colore-pomodoro) 55%, var(--colore-brace));
+    background: linear-gradient(90deg, var(--colore-pomodoro-scuro), var(--colore-pomodoro) 55%, var(--colore-brace));
     color: var(--colore-semolino);
     text-align: center;
     padding: var(--spazio-lg) 0;
