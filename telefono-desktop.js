@@ -1,7 +1,12 @@
-// Su desktop non ha senso cliccare un link "tel:" (non c'è un'app
-// telefono collegata), quindi mostriamo un pannello con il numero al
-// posto di tentare una chiamata che non può partire. Su telefono, invece,
-// lasciamo che il link tel: funzioni normalmente (avvia la chiamata).
+// Su desktop non ha senso avviare una chiamata (non c'è un'app telefono
+// collegata), quindi mostriamo un pannello con il numero. Su telefono,
+// invece, avviamo noi stessi la chiamata via JavaScript.
+//
+// Questi pulsanti sono <button>, non <a href="tel:...">, apposta: alcuni
+// browser (es. Brave) decidono se aprire un'app esterna per i link tel:
+// a un livello che "preventDefault()" non riesce sempre a bloccare del
+// tutto. Con un <button> non c'è alcuna navigazione automatica da fermare:
+// controlliamo noi al 100% cosa succede al click.
 
 document.addEventListener('DOMContentLoaded', () => {
     inizializzaPannelloChiamata();
@@ -11,27 +16,25 @@ function inizializzaPannelloChiamata() {
     const pulsanti = document.querySelectorAll('[data-chiama-intelligente]');
     const overlay = document.getElementById('overlay-chiamata');
 
-    // Controlli difensivi: se manca un pezzo, non facciamo nulla invece
-    // di rischiare un errore che blocca lo script
     if (pulsanti.length === 0 || !overlay) return;
 
     const bottoneChiudi = document.getElementById('chiudi-pannello-chiamata');
     const bottoneCopia = document.getElementById('copia-numero-telefono');
 
-    // Rileva se il dispositivo ha davvero un mouse/hover (desktop) invece
-    // di basarsi sulla larghezza schermo, che può ingannare (es. finestra
-    // stretta su PC, o tablet con mouse collegato)
     function isDesktopVero() {
         return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     }
 
     pulsanti.forEach((pulsante) => {
-        pulsante.addEventListener('click', (evento) => {
+        pulsante.addEventListener('click', () => {
             if (isDesktopVero()) {
-                evento.preventDefault();
                 apriPannello();
+            } else {
+                // Su telefono: avviamo noi la chiamata, leggendo il
+                // numero dall'attributo del pulsante
+                const numero = pulsante.dataset.numeroTelefono;
+                window.location.href = `tel:${numero}`;
             }
-            // Su telefono non facciamo nulla: il link tel: parte da solo
         });
     });
 

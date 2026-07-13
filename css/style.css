@@ -279,11 +279,12 @@ img {
 @media (max-width: 560px) {
     .hero-azioni {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
         width: 100%;
     }
     .hero-azioni .bottone {
-        width: 100%;
+        width: 80%;
+        max-width: 280px;
         text-align: center;
     }
 }
@@ -731,6 +732,19 @@ html.js-animazioni [data-reveal="destra"].visibile {
     border: 1px solid transparent;
     cursor: pointer;
     transition: transform 0.15s ease, background 0.15s ease;
+    /* Reset per i pulsanti <button>: senza questo, i browser applicano
+       stili di sistema (bordo, sfondo grigio, font diverso) che li
+       farebbero apparire diversi dai pulsanti fatti con <a> */
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.bottone:focus-visible {
+    outline: 3px solid var(--colore-cornicione);
+    outline-offset: 2px;
 }
 
 .bottone:hover {
