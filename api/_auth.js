@@ -23,7 +23,7 @@ async function creaSessione(adminId) {
     const db = getDbClient();
 
     const token = crypto.randomBytes(32).toString('hex');
-    const scadenza = Math.floor(Date.now() / 1000) + (2 * 60 * 60);
+    const scadenza = Math.floor(Date.now() / 1000) + (30 * 60);
 
     await db.execute({
         sql: 'INSERT INTO sessioni (token, admin_id, scadenza) VALUES (?, ?, ?)',
