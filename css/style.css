@@ -497,6 +497,43 @@ html.js-animazioni [data-reveal="destra"].visibile {
     flex-wrap: wrap;
 }
 
+.pannello-azioni .bottone {
+    flex: 1 1 150px;
+}
+
+.toast-copiato {
+    position: absolute;
+    top: 0.9rem;
+    left: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--colore-basilico);
+    color: var(--colore-semolino);
+    padding: 0.45rem 0.8rem;
+    border-radius: var(--raggio);
+    font-family: var(--font-utility);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    transform: translateY(-10px) scale(0.9);
+    transition: opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1), transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    pointer-events: none;
+}
+
+.toast-copiato.visibile {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .toast-copiato {
+        transition: opacity 0.15s linear;
+        transform: none !important;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .pannello-chiamata,
     .overlay-pannello {

@@ -20,6 +20,7 @@ function inizializzaPannelloChiamata() {
 
     const bottoneChiudi = document.getElementById('chiudi-pannello-chiamata');
     const bottoneCopia = document.getElementById('copia-numero-telefono');
+    const toastCopiato = document.getElementById('toast-copiato');
 
     function isDesktopVero() {
         return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -74,22 +75,29 @@ function inizializzaPannelloChiamata() {
         if (evento.target === overlay) chiudiPannello();
     });
 
-    // Copia il numero negli appunti con conferma visiva
-    if (bottoneCopia) {
+    // Copia il numero negli appunti, mostrando un avviso animato invece
+    // di modificare il pulsante stesso
+    if (bottoneCopia && toastCopiato) {
+        let timeoutToast;
+
         bottoneCopia.addEventListener('click', async () => {
             const numero = '045 2244631';
             try {
                 await navigator.clipboard.writeText(numero);
-                const testoOriginale = bottoneCopia.textContent;
-                bottoneCopia.textContent = 'Copiato!';
-                setTimeout(() => {
-                    bottoneCopia.textContent = testoOriginale;
-                }, 1800);
+                mostraToast();
             } catch (errore) {
                 // Se il clipboard non è disponibile (raro, permessi negati),
                 // il numero resta comunque visibile e selezionabile a mano
                 console.warn('Copia non riuscita, il numero resta comunque visibile.', errore);
             }
         });
+
+        function mostraToast() {
+            clearTimeout(timeoutToast);
+            toastCopiato.classList.add('visibile');
+            timeoutToast = setTimeout(() => {
+                toastCopiato.classList.remove('visibile');
+            }, 1800);
+        }
     }
 }
