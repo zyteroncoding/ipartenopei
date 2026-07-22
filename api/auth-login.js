@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
     if (!limite.consentito) {
         const minutiRestanti = Math.ceil(limite.secondiRestanti / 60);
         return res.status(429).json({
-            errore: `Troppi tentativi di accesso. Riprova tra ${minutiRestanti} minuti.`,
+            ùerrore: `Troppi tentativi di accesso. Riprova tra ${minutiRestanti} minuti.`,  
         });
     }
 
